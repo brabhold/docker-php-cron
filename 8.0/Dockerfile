@@ -12,7 +12,7 @@ RUN set -eux; \
 ENV TZ "Europe/Brussels"
 ENV PROJECT_DIR=${PROJECT_DIR}
 
-COPY bin/* /usr/local/bin/
+COPY docker-entrypoint /usr/local/bin/
 
 ENTRYPOINT ["docker-entrypoint"]
 
