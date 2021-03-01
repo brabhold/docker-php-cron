@@ -11,6 +11,7 @@ RUN set -eux; \
 
 ENV TZ "Europe/Brussels"
 ENV PROJECT_DIR=${PROJECT_DIR}
+ENV CRONTAB_FILE=
 
 COPY docker-entrypoint /usr/local/bin/
 

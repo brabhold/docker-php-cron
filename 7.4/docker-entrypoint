@@ -1,7 +1,17 @@
 #!/usr/bin/env bash
 set -e
 
+echo "Start cron service"
+
 ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime;
 echo ${TZ} > /etc/timezone
+echo "Set ${TZ} as timezone "
+
+declare -p | grep -Ev 'BASHOPTS|BASH_VERSINFO|EUID|PPID|SHELLOPTS|UID' > /var/local/container.env
+
+if [ -f "${CRONTAB_FILE}" ]; then
+    crontab ${CRONTAB_FILE}
+    echo "Set crontab from ${CRONTAB_FILE}"
+fi
 
 exec "$@"
